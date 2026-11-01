@@ -1,6 +1,6 @@
 package com.alpha7.oneuilock
 
-import android.app.Activity
+import androidx.fragment.app.FragmentActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.LinearLayout
@@ -10,7 +10,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 
-class LockActivity : Activity() {
+class LockActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val target = intent.getStringExtra("target_package").orEmpty()
