@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppLock</string>
+    <string name="accessibility_description">Detects when a protected app is opened so AppLock can request authentication.</string>
+</resources>
