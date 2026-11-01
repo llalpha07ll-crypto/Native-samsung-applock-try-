@@ -7,6 +7,14 @@ android {
     namespace = "com.alpha7.oneuilock"
     compileSdk = 35
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     defaultConfig {
         applicationId = "com.alpha7.oneuilock"
         minSdk = 26
