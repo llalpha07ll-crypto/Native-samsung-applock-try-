@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 
@@ -57,7 +58,7 @@ class MainActivity : Activity() {
         })
         val search = EditText(this).apply {
             hint = "Search apps"
-            singleLine = true
+            isSingleLine = true
             textSize = 16f
             setPadding(dp(14), dp(10), dp(14), dp(10))
             setBackgroundColor(Color.WHITE)
