@@ -1,45 +1,38 @@
 package com.alpha7.oneuilock
 
-import androidx.fragment.app.FragmentActivity
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.LinearLayout
-import android.view.Gravity
-import android.graphics.Color
+import androidx.fragment.app.FragmentActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 
+/**
+ * Shows Android's genuine system-owned biometric/device-credential sheet.
+ * No full-screen third-party lock screen is drawn over the target app.
+ */
 class LockActivity : FragmentActivity() {
+    private var authenticated = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val target = intent.getStringExtra("target_package").orEmpty()
         val appName = try {
-            packageManager.getApplicationLabel(packageManager.getApplicationInfo(target, 0)).toString()
-        } catch (_: Exception) { "Protected app" }
-
-        val root = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER
-            setPadding(32, 32, 32, 32)
-            setBackgroundColor(Color.rgb(246, 248, 248))
+            packageManager.getApplicationLabel(
+                packageManager.getApplicationInfo(target, 0)
+            ).toString()
+        } catch (_: Exception) {
+            "Protected app"
         }
-        root.addView(TextView(this).apply {
-            text = "AppLock"
-            textSize = 28f
-            setTextColor(Color.rgb(25, 40, 42))
-        })
-        root.addView(TextView(this).apply {
-            text = "Unlock $appName"
-            textSize = 17f
-            setTextColor(Color.DKGRAY)
-            setPadding(0, 16, 0, 24)
-        })
-        setContentView(root)
-        authenticate()
+
+        // Keep this host activity visually empty; the OS owns the prompt UI.
+        window.setBackgroundDrawableResource(android.R.color.transparent)
+        window.setDimAmount(0f)
+        window.setLayout(1, 1)
+
+        authenticate(appName)
     }
 
-    private fun authenticate() {
+    private fun authenticate(appName: String) {
         val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or
             BiometricManager.Authenticators.DEVICE_CREDENTIAL
         val manager = BiometricManager.from(this)
@@ -47,22 +40,30 @@ class LockActivity : FragmentActivity() {
             finish()
             return
         }
-        val prompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
+
+        val prompt = BiometricPrompt(
+            this,
+            ContextCompat.getMainExecutor(this),
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
+                    authenticated = true
                     finish()
                 }
+
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    if (errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON) finish()
+                    finish()
                 }
-            })
+            }
+        )
+
         val info = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Unlock app")
-            .setSubtitle("Verify to continue")
+            .setTitle(appName)
+            .setSubtitle("Unlock to continue")
             .setAllowedAuthenticators(authenticators)
             .build()
+
         prompt.authenticate(info)
     }
 }
