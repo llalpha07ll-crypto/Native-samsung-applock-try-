@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PIN pad dimensions. Same names as the AOSP App Lock reference code
+  (SensitiveAppLockOverlayableResources); values are scaled down from the in-car
+  defaults (44sp / 32sp / 96dp / 32sp) for a phone screen.
+-->
+<resources>
+    <dimen name="pin_pad_title_text_size">26sp</dimen>
+    <dimen name="pin_pad_subtitle_text_size">15sp</dimen>
+    <dimen name="pin_pad_key_diameter">72dp</dimen>
+    <dimen name="pin_pad_key_text_size">28sp</dimen>
+    <dimen name="pin_pad_key_padding">0dp</dimen>
+    <dimen name="pin_pad_row_spacing">10dp</dimen>
+    <dimen name="pin_pad_col_spacing">12dp</dimen>
+</resources>

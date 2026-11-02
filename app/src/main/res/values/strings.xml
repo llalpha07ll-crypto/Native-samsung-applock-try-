@@ -1,4 +1,52 @@
 <resources>
     <string name="app_name">AppLock</string>
-    <string name="accessibility_description">Detects when a protected app is opened so AppLock can request authentication.</string>
+    <string name="accessibility_description">Detects when a protected app is opened so AppLock can request your PIN.</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="protected_app">Protected app</string>
+
+    <!-- PIN pad -->
+    <string name="pin_key_delete">Delete</string>
+    <string name="pin_key_confirm">Confirm</string>
+    <string name="pin_wrong">Wrong PIN. Try again.</string>
+    <string name="pin_locked">Too many attempts. Try again in %1$d s.</string>
+    <string name="pin_too_short">Use at least %1$d digits.</string>
+    <string name="pin_mismatch">PINs didn\'t match. Start again.</string>
+
+    <!-- PIN setup -->
+    <string name="pin_create">Create AppLock PIN</string>
+    <string name="pin_create_hint">%1$d to %2$d digits, then tap ✓</string>
+    <string name="pin_confirm">Confirm PIN</string>
+    <string name="pin_confirm_hint">Enter the same PIN again</string>
+    <string name="pin_enter_current">Enter current PIN</string>
+    <string name="pin_enter_current_hint">Verify it\'s you to continue</string>
+
+    <!-- Lock screen -->
+    <string name="lock_title">%1$s is locked</string>
+    <string name="lock_subtitle">Enter your AppLock PIN</string>
+    <string name="use_screen_lock">Use screen lock</string>
+    <string name="unlock_title">%1$s</string>
+    <string name="unlock_subtitle">Unlock to continue</string>
+    <string name="forgot_pin">Forgot PIN?</string>
+    <string name="recover_title">Reset AppLock PIN</string>
+    <string name="recover_subtitle">Verify your screen lock to set a new PIN</string>
+    <string name="recover_unavailable">Set up a screen lock in Android Settings to recover your PIN.</string>
+    <string name="recovered">PIN reset. AppLock is off until you set a new PIN.</string>
+
+    <!-- New app notification -->
+    <string name="channel_name">New apps</string>
+    <string name="protect_title">Protect %1$s?</string>
+    <string name="protect_text">Tap to lock it with AppLock.</string>
+
+    <!-- Main screen -->
+    <string name="main_tagline">Protect individual apps with a PIN</string>
+    <string name="applock_switch">AppLock</string>
+    <string name="applock_on">On. Protected apps ask for your PIN.</string>
+    <string name="applock_off">Off. Turn on to create a PIN.</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="service_on">Accessibility service: on</string>
+    <string name="service_off">Accessibility service: off. Required to detect app launches.</string>
+    <string name="service_button">Open accessibility settings</string>
+    <string name="protected_apps">Protected apps</string>
+    <string name="search_apps">Search apps</string>
 </resources>

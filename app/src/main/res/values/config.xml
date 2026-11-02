@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  App configuration, following the structure of AOSP App Lock (res/values/config.xml).
+  https://source.android.com/docs/automotive/unbundled_apps/app-lock
+-->
+<resources>
+    <!-- System (platform) apps that may be locked. Other system apps are not lockable. -->
+    <string-array name="system_lockable_packages">
+        <item>com.android.calendar</item>
+        <item>com.samsung.android.calendar</item>
+        <item>com.sec.android.gallery3d</item>
+        <item>com.samsung.android.messaging</item>
+    </string-array>
+
+    <!-- Core apps that can never be locked: locking them can break the device. -->
+    <string-array name="never_lockable_packages">
+        <item>com.android.settings</item>
+        <item>com.android.systemui</item>
+        <item>com.android.phone</item>
+        <item>com.android.dialer</item>
+        <item>com.google.android.dialer</item>
+        <item>com.samsung.android.dialer</item>
+        <item>com.android.packageinstaller</item>
+        <item>com.google.android.packageinstaller</item>
+        <item>com.android.permissioncontroller</item>
+        <item>com.google.android.permissioncontroller</item>
+    </string-array>
+
+    <!-- Packages whose windows are ignored when tracking which app is in the foreground
+         (permission dialogs, system overlays). Keyboards are detected automatically. -->
+    <string-array name="transient_packages">
+        <item>android</item>
+        <item>com.android.systemui</item>
+        <item>com.android.permissioncontroller</item>
+        <item>com.google.android.permissioncontroller</item>
+    </string-array>
+
+    <!-- Allow locking of media apps (apps that expose a MediaBrowserService). -->
+    <bool name="config_enableMediaAppsLocking">true</bool>
+</resources>
